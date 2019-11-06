@@ -34,7 +34,9 @@
       <h2 v-if="recipe.complexity <= 3">Difficulty: EASY</h2>
       <h2 v-else-if="recipe.complexity > 3 && recipe.complexity <= 7">Difficulty: NORMAL</h2>
       <h2 v-else>Difficulty: DIFFICULT</h2>
-      <button @click="addMilk">Add Milk</button>
+      <button v-if="!isClick" v-on:click="addMilk">Add Milk</button>
+            <button v-if="isClick">Add Milk</button>
+
     </div>
   </div>
 </template>
@@ -44,14 +46,21 @@ export default {
   name: "Exercise",
   data() {
     return {
+      isClick: false,
       recipe: {
         title: "Crêpes",
         ingredients: ["eggs", "flour", "sugar"],
         complexity: 6
       }
-    };
+    }
   },
-  methods:{}
+  methods: {
+    addMilk(){
+      let milk = "milk"
+      this.recipe.ingredients.push(milk);
+      this.isClick = true;
+    }
+  }
 };
 </script>
 
