@@ -22,7 +22,7 @@
         </ol>
       </div>
     </div>
-    <!-- --------- End Of the Instructions part -->
+<!-- --------- End Of the Instructions part -->
 
     <div class="exerciseResultPart">
       <center>
@@ -32,8 +32,9 @@
         <li v-for="ingredient in recipe.ingredients" :key="ingredient">{{ingredient}}</li>
       </ul>
       <h2 v-if="recipe.complexity <= 3">Difficulty: EASY</h2>
-      <h2 v-else-if="recipe.complexity >= 3">Difficulty: EASY</h2>
-      <h2 v-if="recipe.complexity <= 3">Difficulty: EASY</h2>
+      <h2 v-else-if="recipe.complexity > 3 && recipe.complexity <= 7">Difficulty: NORMAL</h2>
+      <h2 v-else>Difficulty: DIFFICULT</h2>
+      <button @click="addMilk">Add Milk</button>
     </div>
   </div>
 </template>
@@ -46,10 +47,11 @@ export default {
       recipe: {
         title: "Crêpes",
         ingredients: ["eggs", "flour", "sugar"],
-        complexity: 8
+        complexity: 6
       }
     };
-  }
+  },
+  methods:{}
 };
 </script>
 
